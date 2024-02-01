@@ -1,0 +1,17 @@
+[package]
+name = "my_houdini"
+version = "0.1.0"
+edition = "2021"
+
+[target.'cfg(target_os="windows")'.dependencies]
+windows = { version = "0.46.0", features = ["Win32_Foundation", "Win32_Storage_FileSystem", "Win32_System_LibraryLoader", "Win32_Security"] }
+
+[profile.release]
+opt-level = "s"
+strip = true
+lto = true
+panic = "abort"
+
+[dependencies]
+anyhow = "1.0.77"
+winapi = "0.3.9"
